@@ -1,0 +1,16 @@
+<h1>TodoListy</h1>
+
+<ul class="list-unstyled">
+  <% @tasks.each do |task| %>
+    <li>
+      <%= check_box("task", "completed") %>
+      <%= link_to task.title, task_path(task) %>
+      <span> - </span>
+      <%= link_to "(Delete)", tasks_destroy_path(task.id),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add a new task', tasks_new_path %>
